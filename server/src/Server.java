@@ -31,7 +31,7 @@ public class Server {
         String clientSentence = inFromClient.readLine();
         System.out.println("Recieved: " + clientSentence);
 
-        String capitalizedSentence = clientSentence.toUpperCase();
+        String capitalizedSentence = clientSentence.toUpperCase() + "\n";
         outToClient.writeBytes(capitalizedSentence);
 
 

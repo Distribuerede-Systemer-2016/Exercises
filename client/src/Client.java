@@ -9,11 +9,10 @@ import java.net.Socket;
  */
 public class Client {
 
-  public static void main(String args[]){
+  public static void main(String args[]) throws IOException {
 
     BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 
-    try {
       Socket clientSocket = new Socket("localhost", 1337);
 
       DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
@@ -23,15 +22,12 @@ public class Client {
       System.out.println("\nClient Input:");
       String sentence = inFromUser.readLine();
 
-      outToServer.writeBytes(sentence);
+      outToServer.writeBytes(sentence + "\n");
 
       String modifiedSentence = inFromServer.readLine();
       System.out.println("FROM SERVER:" + modifiedSentence);
       clientSocket.close();
 
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
 
   }
 
